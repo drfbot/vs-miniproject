@@ -8,3 +8,30 @@ db.on("error", console.error.bind(console, "connection error"));
 db.once("open", function (callback) {
     console.log("Connection succeeded.");
 });
+
+
+//Handle all request from server
+const PORT=8080;
+function handleRequest(request, response) {
+    response.end('Es läuft: ' + request.url);
+
+
+    //here we will save our data
+    //New Artist
+    var newArtist = new Artist({
+        id: 0,
+        vorname: "Einen wert",
+        pob: "Einen wert",
+        dob: "Einen wert",
+        fave: "Einen Wert"
+    });
+
+
+    newArtist.save(function (error) {
+        if (error) {
+            console.error(error);
+        }
+    });
+
+
+}
