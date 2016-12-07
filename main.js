@@ -1,3 +1,4 @@
+var http = require('http');
 var mongodb =  require('mongodb');
 var mongoose = require('mongoose');
 
@@ -35,3 +36,9 @@ function handleRequest(request, response) {
 
 
 }
+//Create and Start a server
+//Must be at the and, first we create our handle functions and than we start the server
+var server = http.createServer(handleRequest);
+server.listen(PORT, function(){
+    console.log("Server listening on: http://localhost:%s", PORT);
+});
